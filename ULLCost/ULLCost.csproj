@@ -24,4 +24,14 @@
     <Compile Remove="Migrations\20180627014054_Initial.cs" />
     <Compile Remove="Migrations\20180627014054_Initial.Designer.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\images\ULL.jpg" />
+    <Content Remove="wwwroot\images\images.jpeg" />
+    <Content Remove="wwwroot\images\UL-Lafayette-Martibn-Hall-linkedIn.com-photo-e1471799238592.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\images\ULL.jpg" />
+    <None Include="wwwroot\images\Ragincajuns.jpeg" />
+    <None Include="wwwroot\images\Martin.png" />
+  </ItemGroup>
 </Project>

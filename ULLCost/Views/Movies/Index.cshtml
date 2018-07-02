@@ -1,51 +1,54 @@
 @model IEnumerable<ULLCost.Models.Movie>
-
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-
+<center>
+    <h2>Cost Estimator</h2>
+</center>
+<!--
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-
+-->
 <form asp-controller="Movies" asp-action="Index">
     <p>
-        Status: @Html.DropDownList("movieGenre", "All")
         Term: @Html.DropDownList("movieTerm", "All")
         Level: @Html.DropDownList("movieLevel", "All")
-        Level: <input type="text" name="SearchString">
-
+        State: @Html.DropDownList("movieState", "All")
+        Status: @Html.DropDownList("movieGenre", "All")
+        Credit: @Html.DropDownList("movieCredit", "All")
+        <!-- Level: <input type="text" name="SearchString"> -->
         <input type="submit" value="Filter" />
     </p>
 </form>
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Term)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Level)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.State)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Status)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Credits)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Fees)
-                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Term)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Level)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Credits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fees)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Term)
@@ -65,12 +68,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Fees)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+            <!--  <td>
+            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+        </td>
+                -->
+    </tr>
+    }
+        </tbody>
+    </table>

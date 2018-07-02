@@ -31,7 +31,7 @@ namespace ULLCost.Controllers
 
             return View(await movies.ToListAsync());
         } */
-        public ActionResult Index(string movieTerm, string movieLevel, string movieGenre, string searchString)
+        public ActionResult Index(string movieTerm, string movieLevel, string movieState, string movieGenre, int movieCredit, string searchString)
         {
             //Term Query
             var TermLst = new List<string>();
@@ -51,6 +51,15 @@ namespace ULLCost.Controllers
             LevelLst.AddRange(LevelQry.Distinct());
             ViewBag.movieLevel = new SelectList(LevelLst);
 
+            //State Query
+            var StateLst = new List<string>();
+
+            var StateQry = from b in _context.Movie
+                           orderby b.State
+                           select b.State;
+            StateLst.AddRange(StateQry.Distinct());
+            ViewBag.movieState = new SelectList(StateLst);
+
             //Status Query
             var StatusLst = new List<string>();
 
@@ -60,10 +69,20 @@ namespace ULLCost.Controllers
             StatusLst.AddRange(StatusQry.Distinct());
             ViewBag.movieGenre = new SelectList(StatusLst);
 
+            //Credits Query
+            var CreditLst = new List<int>();
+
+            var CreditQry = from d in _context.Movie
+                                              orderby d.Credits
+                                              select d.Credits;
+            CreditLst.AddRange(CreditQry.Distinct());
+            ViewBag.movieCredit = new SelectList(CreditLst);
+            string creditstring = movieCredit.ToString();
+
            
             var movies = from m in _context.Movie
                          select m;
-
+            
             if (!String.IsNullOrEmpty(searchString))
             {
                 movies = movies.Where(s => s.Level.Contains(searchString));
@@ -77,6 +96,14 @@ namespace ULLCost.Controllers
             if (!string.IsNullOrEmpty(movieTerm))
             {
                 movies = movies.Where(y => y.Term == movieTerm);
+            }
+            if (!string.IsNullOrEmpty(movieState))
+            {
+                movies = movies.Where(y => y.State == movieState);
+            }
+            if (!string.IsNullOrEmpty(creditstring))
+            {
+                movies = movies.Where(y => y.Credits == movieCredit);
             }
 
             if (!string.IsNullOrEmpty(movieLevel))
