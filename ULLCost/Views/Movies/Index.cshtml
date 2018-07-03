@@ -4,7 +4,7 @@
 }
 
 <center>
-    <h2>Cost Estimator</h2>
+    <h2 style="color:#800000">Cost Estimator</h2>
 </center>
 <!--
 <p>
@@ -13,14 +13,63 @@
 -->
 <form asp-controller="Movies" asp-action="Index">
     <p>
-        Term: @Html.DropDownList("movieTerm", "All")
-        Level: @Html.DropDownList("movieLevel", "All")
-        State: @Html.DropDownList("movieState", "All")
-        Status: @Html.DropDownList("movieGenre", "All")
-        Credit: @Html.DropDownList("movieCredit", "All")
+        <table class="table">
+           
+            <tbody>
+                <tr>
+                    <td>
+                        What term are you enrolling yourself for?
+                    </td>
+                    <td>
+                        @Html.DropDownList("movieTerm", "All")
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        Are you a Graduate/Undergraduate student?
+                    </td>
+                    <td>
+                        @Html.DropDownList("movieLevel", "All")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Are you a Resident/Non-Resident student?
+                    </td>
+                    <td>
+                        @Html.DropDownList("movieState", "All")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Are you an International Student?
+                    </td>
+                    <td>
+                        @Html.DropDownList("movieGenre", "All")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        How many credits are you applying for?
+                    </td>
+                    <td>
+                        @Html.DropDownList("movieCredit")
+                    </td>
+                </tr>
+            </tbody>
+
+
+        </table>
+
+        <center>  <input class="button" type="submit" value="Estimate" /> </center>
+
+
         <!-- Level: <input type="text" name="SearchString"> -->
-        <input type="submit" value="Filter" />
-    </p>
+<br />
+        <br />
+        <br />
+
 </form>
 <table class="table">
     <thead>
@@ -41,7 +90,7 @@
                 @Html.DisplayNameFor(model => model.Credits)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fees)
+                $ @Html.DisplayNameFor(model => model.Fees)
             </th>
             <th></th>
         </tr>
@@ -66,7 +115,7 @@
                 @Html.DisplayFor(modelItem => item.Credits)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Fees)
+               $ @Html.DisplayFor(modelItem => item.Fees)
             </td>
             <!--  <td>
             <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |

@@ -101,10 +101,10 @@ namespace ULLCost.Controllers
             {
                 movies = movies.Where(y => y.State == movieState);
             }
-            if (!string.IsNullOrEmpty(creditstring))
-            {
-                movies = movies.Where(y => y.Credits == movieCredit);
-            }
+            //if (!string.IsNullOrEmpty(creditstring))
+           // {
+            //    movies = movies.Where(y => y.Credits == movieCredit);
+           // }
 
             if (!string.IsNullOrEmpty(movieLevel))
             {
